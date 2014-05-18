@@ -32,23 +32,33 @@ Then start simple pusher server when rails app boot:
 
 Setup client js code.
 
+Add `//= require simple_pusher` to app/assets/javascripts/application.js
+
+Add code to app/views/layouts/application.html.erb
 ```
+<script type="text/javascript">
     var simple_pusher = new SimplePusher("ws://<%= request.host %>:8088/");
     simple_pusher.broadcast("Hello everybody.");
+</script>
 ```
 
 Broadcast message via server side.
 
-    SimplePusher.broadcast("Time now #{Time.now.to_s(:db}")
+```
+SimplePusher.broadcast("Time now #{Time.now.to_s(:db}")
+```
 
 Message callback at server side.
 
-  　　　SimplePusher.on("ping") do
-    　　　　puts "I received ping request."
-　　　　end
-  　　　SimplePusher.on("ping") do
-    　　　　puts "I also received ping request."
-　　　  end
+```
+SimplePusher.on("ping") do
+  puts "I received ping request."
+end
+
+SimplePusher.on("ping") do
+  puts "I also received ping request."
+end
+```
 
 ## Contributing
 
