@@ -6,8 +6,14 @@ describe SimplePusher do
     SimplePusher::VERSION.wont_be_nil
   end
 
-  it "must respond listen method" do
-    #SimplePusher.repond_with
+  it "setup method work" do
+    # EventMachine.run do
+    #
+    # end
+    SimplePusher.setup do |c|
+      c.port = 8888
+    end
+    SimplePusher.configuration.port.must_equal 8888
   end
 
 
