@@ -60,6 +60,10 @@ SimplePusher.on("ping") do
 end
 ```
 
+## TODO
+
+* Add `on` method message callback to client js.
+
 ## Contributing
 
 1. Fork it
