@@ -7,6 +7,19 @@ module SimplePusher
       @@clients ||= {}
     end
 
+    def self.callbacks
+      @@callbacks ||= {}
+    end
+
+    def self.on(event, &callback)
+      callbacks[event] ||= []
+      callbacks[event] << callback
+    end
+
+    def self.trigger(event)
+      callbacks[event].each {|callback| callback.call }
+    end
+
     def self.add_client(socket)
       client = self.new(socket)
       clients[socket] = client

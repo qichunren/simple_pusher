@@ -1,6 +1,6 @@
 # SimplePusher
 
-SimplePusher is a HTML5 websocket powered realtime messaging tool.
+SimplePusher is a HTML5 websocket powered realtime messaging tool used in Rails project.
 
 ## Installation
 
@@ -16,45 +16,39 @@ Or install it yourself as:
 
     $ gem install simple_pusher
 
+Then start simple pusher server when rails app boot:
+
+    # config/initializers/simple_pusher.rb
+    EventMachine.next_tick do
+      SimplePusher.setup do |config|
+        config.port = 8088
+        config.debug = false
+      end
+      SimplePusher.start
+    end
+
+
 ## Usage
 
-1. Start simple pusher server in rails config/initializers.
-
-```
-# config/initializers/simple_pusher.rb
-EventMachine.next_tick do
-  SimplePusher.setup do |config|
-    config.port = 8088
-    config.debug = false
-  end
-  SimplePusher.start
-end
-```
-
-2. Setup client js code.
+Setup client js code.
 
 ```
     var simple_pusher = new SimplePusher("ws://<%= request.host %>:8088/");
-    simple_pusher.on("message", function(message){
-        console.log("Receive:", message )
-    });
-
-    simple_pusher.on("online_count", function(message){
-
-    });
+    simple_pusher.broadcast("Hello everybody.");
 ```
 
-3. Broadcast message via server side.
+Broadcast message via server side.
 
-```
-SimplePusher.broadcast("Time now #{Time.now.to_s(:db}")
-```
+    SimplePusher.broadcast("Time now #{Time.now.to_s(:db}")
 
-4. Broadcast message via client side.
+Message callback at server side.
 
-```
-simple_pusher.broadcast("Hello everybody.")
-```
+  　　　SimplePusher.on("ping") do
+    　　　　puts "I received ping request."
+　　　　end
+  　　　SimplePusher.on("ping") do
+    　　　　puts "I also received ping request."
+　　　  end
 
 ## Contributing
 

@@ -25,8 +25,13 @@ module SimplePusher
     Connection.broadcast(message)
   end
 
+  def on(event, &callback)
+    Connection.on(event, &callback)
+  end
+
   module_function :start
   module_function :broadcast
+  module_function :on
 
 end
 

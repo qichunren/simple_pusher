@@ -34,6 +34,9 @@ module SimplePusher
            when 'broadcast'
              message = message.join(":")
              Connection.broadcast(message)
+           when 'emit'
+             event = message[0]
+             Connection.trigger(event)
            else
              #TODO
           end
