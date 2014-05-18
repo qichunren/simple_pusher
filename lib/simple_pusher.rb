@@ -1,6 +1,6 @@
 require "simple_pusher/version"
 require 'em-websocket'
-require 'simple_pusher/railtie' if defined?(Rails)
+require 'simple_pusher/engine' if defined?(Rails)
 
 module SimplePusher
 
