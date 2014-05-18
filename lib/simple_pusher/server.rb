@@ -26,21 +26,17 @@ module SimplePusher
           Connection.remove_client(socket)
         end
 
-        socket.onmessage do |message|
-          $stderr.puts "on message: " + message if SimplePusher.configuration.debug
-          #action, *message = msg.split(":")
-          #
-          #case action
-          #  when 'broadcast'
-          #    message = message.join(":")
-          #    Client.broadcast(message)
-          #  when 'emit'
-          #    event = message[0]
-          #    message = message[1..-1].join(":")
-          #  #TODO
-          #  else
-          #
-          #end
+        socket.onmessage do |raw_message|
+          $stderr.puts "on message: " + raw_message if SimplePusher.configuration.debug
+          action, *message = raw_message.split(":")
+
+          case action
+           when 'broadcast'
+             message = message.join(":")
+             Connection.broadcast(message)
+           else
+             #TODO
+          end
         end
 
 

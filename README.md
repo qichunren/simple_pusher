@@ -18,8 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-### Server
-
+1. Start simple pusher server in rails config/initializers.
 
 ```
 # config/initializers/simple_pusher.rb
@@ -32,7 +31,7 @@ EventMachine.next_tick do
 end
 ```
 
-### Client
+2. Setup client js code.
 
 ```
     var simple_pusher = new SimplePusher("ws://<%= request.host %>:8088/");
@@ -43,6 +42,18 @@ end
     simple_pusher.on("online_count", function(message){
 
     });
+```
+
+3. Broadcast message via server side.
+
+```
+SimplePusher.broadcast("Time now #{Time.now.to_s(:db}")
+```
+
+4. Broadcast message via client side.
+
+```
+simple_pusher.broadcast("Hello everybody.")
 ```
 
 ## Contributing

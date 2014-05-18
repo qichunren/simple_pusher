@@ -21,7 +21,12 @@ module SimplePusher
     end
   end
 
+  def broadcast(message)
+    Connection.broadcast(message)
+  end
+
   module_function :start
+  module_function :broadcast
 
 end
 
