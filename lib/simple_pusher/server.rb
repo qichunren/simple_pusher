@@ -8,12 +8,12 @@ module SimplePusher
 
     attr :host, :port
 
-    def initialize(options={})
+    def initialize
       @host = "0.0.0.0"
-      @port = options[:port] || 8088
+      @port = SimplePusher.configuration.port
     end
 
-    def self.start(options={})
+    def self.start
       $stderr.puts "Start SimplePush ..." if SimplePusher.configuration.debug
       EM::WebSocket.run(:host => instance.host, :port => instance.port) do |socket|
         socket.onopen do |handshake|
