@@ -1,6 +1,6 @@
 # SimplePusher
 
-TODO: Write a gem description
+SimplePusher is a HTML5 websocket powered realtime messaging tool.
 
 ## Installation
 
@@ -18,7 +18,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Server
+
+
+```
+# config/initializers/simple_pusher.rb
+EventMachine.next_tick do
+  SimplePusher.setup do |config|
+    config.port = 8088
+    config.debug = false
+  end
+  SimplePusher.start
+end
+```
+
+### Client
+
+```
+    var simple_pusher = new SimplePusher("ws://<%= request.host %>:8088/");
+    simple_pusher.on("message", function(message){
+        console.log("Receive:", message )
+    });
+
+    simple_pusher.on("online_count", function(message){
+
+    });
+```
 
 ## Contributing
 
