@@ -27,6 +27,9 @@ Then start simple pusher server when rails app boot:
       SimplePusher.start
     end
 
+### Note
+
+As initializer code `config/initializers/simple_pusher.rb` show, your rails runtime environment must be in EventMachine run loop. Otherwise you start EventMachine run loop in a new thread.
 
 ## Usage
 
@@ -59,6 +62,9 @@ SimplePusher.on("ping") do
   puts "I also received ping request."
 end
 ```
+
+## Emulating WebSockets in older browsers
+It is possible to emulate WebSockets in older browsers using flash emulation. For example take a look at the [web-socket-js](https://github.com/gimite/web-socket-js) project.
 
 ## TODO
 
