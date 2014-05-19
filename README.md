@@ -1,6 +1,6 @@
 # SimplePusher
 
-SimplePusher is a HTML5 websocket powered realtime messaging tool used in Rails project.
+SimplePusher is a HTML5 websocket powered realtime messaging tool used in Rails / Sintra project.
 
 ## Installation
 
