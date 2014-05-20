@@ -17,6 +17,7 @@ module SimplePusher
     end
 
     def self.trigger(event)
+      callbacks[event] ||= []
       callbacks[event].each {|callback| callback.call }
     end
 
