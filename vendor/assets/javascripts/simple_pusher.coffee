@@ -1,20 +1,17 @@
 class SimplePusher
   constructor: (url) ->
     @websocket = new WebSocket(url)
-    @websocket.onmessage = (e) ->
-      event = e.data.split(":")
+    @_callbacks ||= {}
+    @websocket.onmessage = (e) =>
+      data = e.data.split(":")
+      event = data[0]
+      message = data[1..-1].join(":")
+      callback_fn.call(this, message) for callback_fn in @_callbacks[event]
 
-  on: (event_name, callback) ->
-    if event_name == 'connect'
-      console.log("on open")
-      @websocket.onopen = callback
-    else if event_name == 'message'
-      console.log("on message")
-      @websocket.onmessage = (e) ->
-        callback(e.data)
-    else if event_name == 'close'
-      console.log("on close")
-      @websocket.onclose = callback
+  on: (event_name, callback_fn) ->
+    @_callbacks[event_name] = (@_callbacks[event_name] ||= [])
+    @_callbacks[event_name].push(callback_fn)
+    this
 
   broadcast: (message) ->
     @websocket.send("broadcast:#{message}")
