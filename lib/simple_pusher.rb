@@ -21,8 +21,10 @@ module SimplePusher
     end
   end
 
-  def broadcast(message)
-    Connection.broadcast(message)
+  # Publish message to all connected socket.
+  # And the client websocket which listened 'channel' will get message callback.
+  def publish(channel, message)
+    Connection.publish(channel, message)
   end
 
   def on(event, &callback)

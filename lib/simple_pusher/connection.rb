@@ -30,9 +30,9 @@ module SimplePusher
       clients.delete(socket)
     end
 
-    def self.broadcast(message)
+    def self.publish(channel, message)
       clients.each do |websocket, client|
-        websocket.send message
+        websocket.send "#{channel}:#{message}"
       end
     end
 
