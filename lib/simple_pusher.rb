@@ -1,9 +1,8 @@
-require "simple_pusher/version"
+require 'simple_pusher/version'
 require 'em-websocket'
 require 'simple_pusher/engine' if defined?(Rails)
 
 module SimplePusher
-
   class << self
     def setup
       yield configuration
@@ -15,7 +14,7 @@ module SimplePusher
     end
   end
 
-  def start(options={})
+  def start(_options = {})
     EventMachine.next_tick do
       Server.start
     end
@@ -34,9 +33,8 @@ module SimplePusher
   module_function :start
   module_function :broadcast
   module_function :on
-
 end
 
-SimplePusher.autoload :Configuration, "simple_pusher/configuration"
-SimplePusher.autoload :Connection,    "simple_pusher/connection"
-SimplePusher.autoload :Server,        "simple_pusher/server"
+SimplePusher.autoload :Configuration, 'simple_pusher/configuration'
+SimplePusher.autoload :Connection,    'simple_pusher/connection'
+SimplePusher.autoload :Server,        'simple_pusher/server'

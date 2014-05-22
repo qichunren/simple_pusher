@@ -18,11 +18,11 @@ module SimplePusher
 
     def self.trigger(event)
       callbacks[event] ||= []
-      callbacks[event].each {|callback| callback.call }
+      callbacks[event].each { |callback| callback.call }
     end
 
     def self.add_client(socket)
-      client = self.new(socket)
+      client = new(socket)
       clients[socket] = client
     end
 
@@ -31,7 +31,7 @@ module SimplePusher
     end
 
     def self.publish(channel, message)
-      clients.each do |websocket, client|
+      clients.each do |websocket, _client|
         websocket.send "#{channel}:#{message}"
       end
     end
@@ -47,6 +47,5 @@ module SimplePusher
     def emit(message)
       @websocket.send(message)
     end
-
   end
 end

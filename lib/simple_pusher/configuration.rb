@@ -7,7 +7,5 @@ module SimplePusher
       @port ||= 8088
       @debug ||= false
     end
-
-
   end
 end

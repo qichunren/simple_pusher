@@ -1,8 +1,10 @@
-# SimplePusher [![Gem Version](https://badge.fury.io/rb/simple_pusher@2x.png)](http://badge.fury.io/rb/simple_pusher)
+# SimplePusher
 
 SimplePusher is a HTML5 websocket powered realtime messaging tool used in Rails / Sintra project.
 
 ## Installation
+
+[![Gem Version](https://badge.fury.io/rb/simple_pusher@2x.png)](http://badge.fury.io/rb/simple_pusher)
 
 Add this line to your application's Gemfile:
 
