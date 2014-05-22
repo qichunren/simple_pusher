@@ -14,7 +14,7 @@ module SimplePusher
     end
 
     def self.start
-      $stderr.puts "Start SimplePush ..." if SimplePusher.configuration.debug
+      $stderr.puts "Start SimplePusher ..." if SimplePusher.configuration.debug
       EM::WebSocket.run(:host => instance.host, :port => instance.port) do |socket|
         socket.onopen do |handshake|
           $stderr.puts "on open:" + handshake.inspect if SimplePusher.configuration.debug
