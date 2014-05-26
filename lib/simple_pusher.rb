@@ -31,7 +31,7 @@ module SimplePusher
   end
 
   module_function :start
-  module_function :broadcast
+  module_function :publish
   module_function :on
 end
 
