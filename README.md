@@ -24,7 +24,6 @@ Then start simple pusher server when rails app boot:
     EventMachine.next_tick do
       SimplePusher.setup do |config|
         config.port = 8088
-        config.debug = false
       end
       SimplePusher.start
     end
@@ -43,14 +42,16 @@ Add code to app/views/layouts/application.html.erb
 ```
 <script type="text/javascript">
     var simple_pusher = new SimplePusher("ws://<%= request.host %>:8088/");
-    simple_pusher.broadcast("Hello everybody.");
+    simple_pusher.on('channel_name', function(message){
+      alert('got message:'+message);
+    });
 </script>
 ```
 
 Broadcast message via server side.
 
 ```
-SimplePusher.broadcast("Time now #{Time.now.to_s(:db}")
+SimplePusher.publish('channel_name', "Time now #{Time.now.to_s(:db}")
 ```
 
 Message callback at server side.
