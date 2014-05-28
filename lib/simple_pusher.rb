@@ -38,3 +38,4 @@ end
 SimplePusher.autoload :Configuration, 'simple_pusher/configuration'
 SimplePusher.autoload :Connection,    'simple_pusher/connection'
 SimplePusher.autoload :Server,        'simple_pusher/server'
+SimplePusher.autoload :Middleware,    'simple_pusher/middleware'

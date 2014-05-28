@@ -54,6 +54,11 @@ Broadcast message via server side.
 SimplePusher.publish('channel_name', "Time now #{Time.now.to_s(:db}")
 ```
 
+Broadcast message via http POST.
+```
+curl -d 'channel=channel1&message=hello'  http://localhost:3000/simple_pusher
+```
+
 Message callback at server side.
 
 ```
