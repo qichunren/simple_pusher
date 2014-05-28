@@ -76,7 +76,8 @@ It is possible to emulate WebSockets in older browsers using flash emulation. Fo
 
 ## TODO
 
-* Add `on` method message callback to client js.
+* <del>Add `on` method message callback to client js.</del>
+* Support JSON format message.
 
 ## Contributing
 
