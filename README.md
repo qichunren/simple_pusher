@@ -98,6 +98,7 @@ It is possible to emulate WebSockets in older browsers using flash emulation. Fo
 
 * <del>Add `on` method message callback to client js.</del>
 * Support JSON format message.
+* Use SimplePusher js in Sinatra app.
 
 ## Contributing
 
