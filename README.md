@@ -71,6 +71,26 @@ SimplePusher.on("ping") do
 end
 ```
 
+## Use SimplePusher in Sinatra app
+
+```
+# app.rb
+require 'simple_pusher/sinatra_app'
+
+EventMachine.next_tick do
+  SimplePusher.setup do |config|
+    config.port = 8088
+  end
+  SimplePusher.start
+end
+
+class MyApp < Sinatra::Base
+
+  use SimplePusher::SinatraApp # With this you just setup http post interface: curl -d 'channel=channel1&message=hello'  http://localhost:3000/simple_pusher
+end
+
+```
+
 ## Emulating WebSockets in older browsers
 It is possible to emulate WebSockets in older browsers using flash emulation. For example take a look at the [web-socket-js](https://github.com/gimite/web-socket-js) project.
 
