@@ -3,6 +3,12 @@ require 'em-websocket'
 require 'simple_pusher/engine' if defined?(Rails)
 
 module SimplePusher
+  autoload :Configuration, 'simple_pusher/configuration'
+  autoload :Connection,    'simple_pusher/connection'
+  autoload :Server,        'simple_pusher/server'
+  autoload :Middleware,    'simple_pusher/middleware'
+
+
   class << self
     def setup
       yield configuration
@@ -34,8 +40,3 @@ module SimplePusher
   module_function :publish
   module_function :on
 end
-
-SimplePusher.autoload :Configuration, 'simple_pusher/configuration'
-SimplePusher.autoload :Connection,    'simple_pusher/connection'
-SimplePusher.autoload :Server,        'simple_pusher/server'
-SimplePusher.autoload :Middleware,    'simple_pusher/middleware'
