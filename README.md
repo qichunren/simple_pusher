@@ -91,6 +91,8 @@ end
 
 ```
 
+Currently I have not implement directly require simple_pusher js from project. You can download `simple_pusher.coffee` file from [Github repository](https://raw.githubusercontent.com/qichunren/simple_pusher/master/vendor/assets/javascripts/simple_pusher.coffee) to your project for use.
+
 ## Emulating WebSockets in older browsers
 It is possible to emulate WebSockets in older browsers using flash emulation. For example take a look at the [web-socket-js](https://github.com/gimite/web-socket-js) project.
 
