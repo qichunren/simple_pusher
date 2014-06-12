@@ -1,6 +1,5 @@
 require 'singleton'
 require 'em-websocket'
-require 'connection'
 
 module SimplePusher
   class Server
