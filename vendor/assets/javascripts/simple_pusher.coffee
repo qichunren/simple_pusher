@@ -6,7 +6,7 @@ class SimplePusher
       data = e.data.split(":")
       event = data[0]
       message = data[1..-1].join(":")
-      callback_fn.call(this, message) for callback_fn in @_callbacks[event]
+      callback_fn.call(this, message) for callback_fn in @_callbacks[event] if @_callbacks[event]
 
   on: (event_name, callback_fn) ->
     @_callbacks[event_name] = (@_callbacks[event_name] ||= [])
