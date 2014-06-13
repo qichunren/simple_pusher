@@ -21,7 +21,7 @@ module SimplePusher
         end
 
         socket.onclose do
-          $stderr.puts 'on close'
+          $stderr.puts 'on close' if SimplePusher.configuration.debug
           Connection.remove_client(socket)
         end
 
